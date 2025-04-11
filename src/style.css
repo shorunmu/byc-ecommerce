@@ -1,0 +1,557 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Manrope:wght@200..800&display=swap');
+
+*{
+    font-family: "manrope", sans-serif;
+}
+
+html, body {
+    padding: 0;
+    margin: 0;
+}
+
+.row {
+    margin: 0 !important;
+}
+
+
+/* navbar section  */
+.navbar-head{
+background: #ffff !important;
+}
+.navbar-logo{
+    max-width: 100px !important;
+    height: auto;
+}
+
+/* navbar section ends here  */
+
+/* homepage first section styling  */
+.getthebest{
+    font-size: 45px !important;
+    font-weight: bolder;
+}
+ .white-and-black-btn button{
+     border-radius: 0 !important;
+     padding: 6px 25px;
+ }
+
+ .first-btn{
+    background: #000 !important;
+    color: #ffff !important;
+ }
+ .sec-btn{
+    background: #ffff !important;
+    color: #000 !important;
+    border: 2px solid #000 !important;
+ }
+ /* homepage first section styling ends here  */
+ 
+
+
+/* homepage second section styling */
+.frameone,.frametwo{
+    margin-top: 48px;
+}
+
+.frameone img,.frametwo img{
+    width: 90% !important;
+}
+/*  homepage second section styling ends here */
+
+/* homepage third section styling  */
+.small-etiam{
+    font-size: 12.5px;
+    font-weight: normal;
+}
+.view-btn button{
+    border-radius: 0 !important;
+    padding: 8px 50px !important;
+    margin-top: 30px !important;
+    background: #ffff !important;
+    color: #000 !important;
+    border: 1px solid #000 !important;
+}
+/* homepage third section styling ends here  */
+
+
+/* homepage fourth section styling */
+.the-byc-collections-row{
+    background: #F1F1F1;
+    padding: 30px !important;
+}
+.four-cards-three-img {
+    border-radius: 0 !important;
+    border: none !important;
+}
+.text-hfourta {
+    margin-top: 100px !important;
+    width: 100% !important;
+    margin-right: 50px;
+}
+.the-byc-collections-row p{
+    font-size: 9px;
+    color: #424242;
+}
+.the-byc-collections-row h2 {
+    font-size: 35px;
+
+}
+.the-byc-collections-row h4{
+    font-size: 23px;
+}
+
+.the-byc-collections-row a {
+    border: 1px solid #000 !important;
+    padding: 8px 50px !important;
+    border-radius: 0 !important;
+    font-size: 12px !important;   
+}
+/* homepage fourth section styling ends here  */
+
+
+/* homepage fifth section styling */
+.chev-right h1{
+    font-size: 50px;
+    font-weight: normal !important;
+    padding-top: 120px;
+}
+.p-rows{
+    font-weight: 500;
+}
+.secoond-p{
+    color: #828282;
+}
+.style-btn button{
+    border-radius: 0 !important;
+    padding: 7px 10px !important;
+    background: #ffff !important;
+    color: #000 !important;
+    border: 1px solid rgb(242, 236, 236) !important;
+}
+.style-btn .pant-text{
+    background: #D7000F !important;
+    color: #ffff !important;
+}
+.btn-text{
+    font-size: 12px;
+}
+.this-row-images-three{
+    margin-top: 50px !important;
+    margin-bottom: 50px !important;
+}
+
+.women-pants-text{
+    font-size: 12px;
+}
+.byc-fivezero-text{
+    font-size: 10px;
+}
+.amount-naira{
+    font-size: 14px;
+}
+
+
+
+/* blog page styling */
+.author-views img{
+    width: 50% !important;
+    display: block !important;
+}
+
+.justify-text{
+    text-align: justify !important;
+}
+.justify-text{
+    font-size: 13.5px;
+    color: #424242;
+}
+.btn-read-more{
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 12px;
+    border-radius: 0;
+    border: 1.3px solid #000 !important;
+    padding: 10px 10px !important;
+}
+.p-small{
+    font-size: 13px;
+}
+.p-small small{
+    font-size: 8px;
+    font-weight: lighter !important;
+}
+.five-btn-button button{
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 0 !important;
+    background: #fff !important;
+    border: 0px solid #000 !important;
+}
+
+/* blog page styling ends here  */
+
+
+/* bycblognews components styling */
+.viewsandloveicons{
+    border-radius: 0 !important;
+    border: none !important;
+    background: #E0E0E0 !important;
+}
+.blognews-frames{
+    border-radius: 0 !important;
+    border: none !important;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px !important;
+}
+
+.frames-blognews {
+    padding: 30px 40px !important;
+}
+.blognewsframes-p{
+    font-size: 10.5px !important;
+    color: #424242;
+}
+
+/* moreblognews styling  */
+.amet-minim-moll{
+    font-size: 13.02px !important;
+}
+ 
+
+
+/* about us page styling is here  */
+.about-us-page {
+    margin-bottom: 100px !important;
+}
+.dashicons-wors{
+    background: #BD3A3A0A !important;
+    border-radius: 0 !important;
+    border: none !important;
+    height: 100% !important;
+
+}
+.dashicons-wors img{
+    width: 20% !important;
+}
+.dashicons-wors small {
+    font-size: 12px !important;
+}
+.dashicons-wors h5 {
+    color: #BD3A3A !important;
+}
+
+/* about us page styling ends here  */
+
+
+/* contact us page styling  */
+
+.frameseight-six img{
+    width: 30% !important;
+}
+.frameseight-six h5{
+    font-size: 16px;
+}
+.frameseight-six small{
+    font-size: 12px !important;
+}
+
+.form-control-bod{
+    border: 1.5px solid red;
+}
+/* contact us page styling ends here */
+
+/* recently viewed section styling  */
+.recently-viewed{
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.framebyc-boxer-card-paragraph{
+    font-size: 15px;
+    margin-top: -8px !important;
+}
+.framebyc-boxer-card-small{
+    font-size: 10px;
+    color:  #787885 ;
+}
+.framebyc-boxer-card-small-p{
+    font-size: 10px;
+}
+.custom-fonts-ss, .text-see-all-icon{
+    font-size: 13px !important;
+}
+/* recently-viewed  styling ends here  */
+
+/* login styling  */
+.login-sing-up{
+    border-radius: 5px !important;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.the-email-input label, .remember-me, .create-section p{
+    font-size: 12px !important ;
+    font-weight: 600;
+}
+.create-section p {
+    margin-top: 70px !important;
+    margin-bottom: 125px !important;
+}
+.the-email-input input{
+    border: 1.3px solid red !important;
+}
+.login-btn, .create-section button{
+    font-size: 15px !important;
+    font-weight: 600;
+}
+.login-sigmup-rows{
+    margin-bottom: 80px !important;
+}
+.remember-me{
+    padding-left: 120px !important;
+}
+
+/* login styling ends here */
+
+/* cart styling  */
+.cart-conainer {
+    border-radius: 5px !important;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; 
+    margin-bottom: 80px !important;
+}
+.cart-totals{
+    margin: 20px 0 !important;
+}
+.btn-large-2, .btn-large-1{
+    padding:10px 52px !important;
+    font-size: 15px !important;
+    border-radius: 10px !important;
+}
+.btn-large-3{
+    padding: 12px 20px !important;
+    font-size: 15px !important;
+    font-weight: 600;
+    border-radius: 10px !important;
+}
+.increments-btn input {
+    padding: 4 !important;
+    font-size: 12px;
+    width: 30% !important;
+    border: none !important;
+}
+.increments-btn button{
+    border-radius: 0 !important;
+}
+/* cart styling ends here */
+
+/* checkout styling */
+.checkout-here{
+    border-radius: 5px !important;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; 
+}
+.pragrapgh-text{
+    font-size: 10px !important;
+}
+.personal-data{
+    font-size: 12px !important;
+}
+.trusted-section label{
+    font-size: 14px !important;
+    font-weight: 600;
+}
+.trusted-section{
+    padding: 40px 0px 20px 20px  !important;
+}
+.your-personal {
+    font-size: 10px !important;
+    margin-top: 40px !important ;
+}
+.trusted-img img {
+    width: 80% !important;
+}
+/* checkout styling ends here */
+
+/* add to cart styling  */
+.this-boxer-set{
+    font-size: 12.5px !important;
+    font-weight: 500;
+}
+
+.color-circle{
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+    display: inline-block !important;
+    margin: 5px !important;
+    cursor: pointer !important;
+}
+.blue{background-color: #007bff;}
+.purple{background-color: #6f42c1;}
+.orange{background-color: #fd7e14;}
+.black{background-color: #343a40;}
+
+.aval-btn{
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 15px !important;
+    padding: 10px 15px !important;
+    border-radius: 0 !important;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.good-product p{
+    font-size: 10px !important;
+}
+.good-product h6{
+    font-size: 14px !important;
+}
+.good-product span {
+    font-size: 12px !important;
+}
+.progress-bar{
+    height: 10px !important;
+}
+.progress{
+    height: 10px !important;
+}
+.decre-btn{
+    font-size: 20px !important;
+    padding: 10px 15px !important;
+    border-radius: 0 !important;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.input-decre{
+    font-size: 20px !important;
+    border: none !important;
+    padding: 10px 15px !important;
+    border-radius: 0 !important;
+    width: 50px !important;
+}
+.btn-large-wish{
+    padding: 10px 75px !important;
+    font-size: 15px !important;
+}
+.btn-cart-plus{
+    padding: 5px 140px !important;
+    font-size: 15px !important;
+    color: #fff !important;
+}
+/* add to cart styling ends here  */
+
+/* all products styling  */
+.row-for-all-products{
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 10px !important;
+}
+.camisole-border{
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.framebyc-camisole-card h6{
+    font-size: 15px !important;
+}
+.framebyc-camisole-card-paragraph{
+    font-size: 14px !important;
+}
+.framebyc-camisole-card-small{
+    font-size: 9px !important;
+    color:  #787885 ;
+}
+.framebyc-camisole-card-small-p{
+    font-size: 10px !important;
+}
+.card-buttons{
+    display: none !important;
+    margin-top: 10px !important;
+    justify-content: center !important;
+    gap: 10px !important;
+}
+.camisole-border:hover .card-buttons, .camisole-borders:hover .card-buttons{
+    display: flex !important;
+}
+.camisole-border, .camisole-borders{
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.camisole-border:hover, .camisole-borders:hover{
+    transform: scale(1.05);
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.heartandbuy{
+    font-size: 10px !important;
+}
+.card-buttons a {
+    padding: 5px 11px !important;
+    font-size: 12px !important;
+    border-radius: 10 !important;
+}
+.white-danger-btn{
+    border: 1px solid red !important;
+}
+.five-btn-buttons{
+    margin-top: 300px !important;
+}
+/* all products styling ends here */
+
+/* boxers jsx styling */
+.imagesboxers-two{
+    margin-top: 50px !important;
+}
+/* boxers jsx styling ends here */ 
+
+/* camsole styling */
+.camsole-rows{
+    padding-bottom: 80px !important;
+}
+
+/* footer styling  */
+.ul-li-contain ul li a{
+    color: #fff !important;
+    font-size: 12px;
+}
+.ul-li-contain a {
+    font-size: 10px;
+}
+footer {
+    background: #000 !important;
+}
+
+.ul-li-contain h5{
+    font-size: 16px !important;
+}
+.ul-li-contain button, .ul-li-contain input{
+    padding: 10px 20px !important;
+    background-color: #000 !important;
+    color: #fff !important;
+    border-radius: 0 !important;
+    font-size: smaller;
+    border: none !important;
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 620px){
+    .frames-blognews {
+        padding: 20px !important;
+    }
+    .carting-btn{
+        justify-content: start;
+    }
+    
+}
