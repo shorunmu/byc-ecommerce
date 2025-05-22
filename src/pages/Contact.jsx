@@ -1,11 +1,14 @@
 import React from 'react'
 import { Frameonefiveeight, Frameonefiveseven, Frameonefivesix, Rectangle } from '../assets'
 import RecentlyViewed from '../components/RecentlyViewed'
+import BreadCrumb from '../components/BreadCrumb'
 
 const Contact = () => {
   return (
     <>
       <div className="container my-5">
+
+        <BreadCrumb/>
         <div className="row ">
         <div className="col-sm-12 col-md-12 col-lg-12  text-center mb-4">
             <h3 className='fw-bold'>CONTACT US</h3>
@@ -16,7 +19,7 @@ const Contact = () => {
         </div>
 
         <div className="row bg-light p-4  frameseight-six">
-        <div className="col-sm-12 col-md-12 col-lg-4 d-flex gap-4">
+        <div className="col-sm-12 col-md-12 col-lg-4 d-flex gap-4 address-phone">
           <img src={Frameonefiveeight} alt="" className='' / >
           <div className='mt-2'>
             <h5 className='fw-bold mb-0 '>ADDRESS</h5>
@@ -24,7 +27,7 @@ const Contact = () => {
           </div>
         </div>
 
-        <div className="col-sm-12 col-md-12 col-lg-4 d-flex gap-4">
+        <div className="col-sm-12 col-md-12 col-lg-4 d-flex gap-4 address-phone">
           <img src={Frameonefiveseven} alt="" className='' / >
           <div className='mt-3'>
             <h5 className='fw-bold mb-0'>PHONE </h5>
@@ -32,7 +35,7 @@ const Contact = () => {
           </div>
         </div>
 
-        <div className="col-sm-12 col-md-12 col-lg-4 d-flex gap-4">
+        <div className="col-sm-12 col-md-12 col-lg-4 d-flex gap-4 address-phone">
           <img src={Frameonefivesix} alt="" className='' / >
           <div className='mt-3'>
             <h5 className='fw-bold mb-0'>EMAIL ADDRESS</h5>
@@ -48,23 +51,22 @@ const Contact = () => {
 
 
             <form>
-            <div className="mb-4">
-                <label for="exampleInputEmail1" className="form-label">Phone</label>
-                <input type="email" className="form-control form-control-bod" id="exampleInputEmail1" aria-describedby="emailHelp"/>
-            </div>
-            <div className="mb-4">
-                <label for="exampleInputPassword1" className="form-label">Email address</label>
-                <input type="password" className="form-control form-control-bod" id="exampleInputPassword1"/>
-            </div>
-            <div className="mb-4">
-                <label for="exampleInputPassword1" className="form-label mb-4">Notes</label>
-                <input type="password" className="form-control form-control-bod p-5" id="exampleInputPassword1"/>
-            </div>
+              <div className="mb-4">
+                <label htmlFor="phoneInput" className="form-label">Phone</label>
+                <input type="tel" className="form-control form-control-bod" id="phoneInput" aria-describedby="phoneHelp" />
+              </div>
+              <div className="mb-4">
+                <label htmlFor="emailInput" className="form-label">Email Address</label>
+                <input type="email" className="form-control form-control-bod" id="emailInput" />
+              </div>
+              <div className="mb-4">
+                <label htmlFor="notesInput" className="form-label">Notes</label>
+                <textarea className="form-control form-control-bod p-3" id="notesInput" rows="4"></textarea>
+              </div>
 
-
-            <div className=" d-grid my-5">
-            <button class="btn btn-danger" type="button">Submit</button>
-            </div>
+              <div className="d-grid my-5">
+                <button className="btn btn-danger" type="submit">Submit</button>
+              </div>
             </form>
         </div>
         

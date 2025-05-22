@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { Cardone, Cardthree, Cardtwo, Frame166, Frame167, Frame168, Framefive, Framefour, Frameone, Frameonegni, Frameonsvni, Frameonsxni, Framesix, Framethree, Frametwo, Groupeightfour } from '../assets'
 import BycBlogNews from '../components/BycBlogNews'
+import ShopByCategoryCarousel from '../components/ShopByCategoryCarousel';
 
 const Home = () => {
   const words = ["yourself", "women", "kids"];
@@ -148,7 +149,7 @@ const Home = () => {
 {/* fourth section of this homepage ends here  */}
 
  {/* fifth section of this homepage start here  */}
-      <div className="container">
+      {/* <div className="container">
         <div className="row">
           <div className="col-sm-12 col-md-12 col-lg-12 mb-3 text-center">
             <h4 className='fw-bold'>Shop By Category</h4>
@@ -200,7 +201,10 @@ const Home = () => {
           </div>
         </div>
 
-        </div>
+        </div> */}
+
+
+        <ShopByCategoryCarousel/>
 {/* fifth section of this homepage ends here  */}
 
 
@@ -214,9 +218,7 @@ const Home = () => {
         <BycBlogNews/>
       
 
-        <div className="view-btn text-center my-5">
-            <button type="button" className="btn btn-secondary btn-lg  ">View All</button>
-        </div>
+        
 
       </div>
 

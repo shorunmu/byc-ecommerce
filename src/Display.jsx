@@ -17,6 +17,13 @@ import AllProducts from './pages/AllProducts'
 import Boxers from './pages/Boxers'
 import Wishlist from './pages/Wishlist'
 import Camsole from './pages/Camsole'
+import SortByDrop from './components/SortByDrop'
+import ToggleButton from './components/ToggleButton'
+import BreadCrumb from './components/BreadCrumb'
+import ImageCarousel from './components/ImageCarousel'
+import AdminApp from './admin/AdminApp'
+import CategoryProducts from './pages/CategoryProducts'
+
 
 
 const Display = () => {
@@ -30,7 +37,7 @@ const Display = () => {
             <Route path = '/' element={<Home/>} />
             <Route path = 'Blog' element={<Blog/>} />
             <Route path = 'BycBlognews' element = {<BycBlogNews/>}/>
-            <Route path = 'MoreBlognews' element = {<MoreBlogNews/>}/>
+            <Route path = '/blog/:id' element = {<MoreBlogNews/>}/>
             <Route path = 'About' element = {<About/>}/>
             <Route path = 'Contact' element = {<Contact/>}/>
             <Route path = 'RecentlyViewed' element = {<RecentlyViewed/>}/>
@@ -42,6 +49,12 @@ const Display = () => {
             <Route path = 'Boxers' element={<Boxers/>}/>
             <Route path = 'Wishlist' element = {<Wishlist/>}/>  
             <Route path = 'Camsole' element = {<Camsole/>}/>
+            <Route path = 'SortByDrop' element = {<SortByDrop/>}/>
+            <Route path = 'ToggleButton' element = {<ToggleButton/>}/>
+            <Route path = 'BreadCrumb' element = {<BreadCrumb/>}/>
+            <Route path = 'ImageCarousel' element = {<ImageCarousel/>}/>
+            <Route path = 'admin/*' element={<AdminApp/>} />
+            <Route path = 'products/:category/:subcategory' element={<CategoryProducts/>} />
         </Routes>
         <Footer/>
       </BrowserRouter>
