@@ -36,7 +36,6 @@ import Frameboxerblue from './Frameboxerblue.png';
 import Imageboxerblueone from './Imageboxerblueone.png';
 import Imageboxerbrown from './Imageboxerbrown.png';
 import Imageboxergold from './Imageboxergold.png';
-import Imagesetboxone from './Imagesetboxone.png';
 import Imagesetboxtwo from './Imagesetboxtwo.png';
 import Imagesetboxthree from './Imagesetboxthree.png';
 
@@ -45,7 +44,7 @@ export {
   Cardone, Cardtwo, Cardthree, Frameonsxni, Frameonsvni, Frameonegni, Frameonesvzr, Frameonesvzron, Frameonesvzrtw,
   Payments, Viewsandlove, Frameonesevenone, Frameoneseveght, Dashiconsawards, Rectangle, Framebycboxer,
   Frameonefivesix, Frameonefiveseven, Frameonefiveeight, Groupeightfour, Menboxerimgone, Trusted, Boxercart,
-  Frameboxersblack, Frameboxerblue, Imageboxerblueone, Imageboxerbrown, Imageboxergold, Imagesetboxone,
+  Frameboxersblack, Frameboxerblue, Imageboxerblueone, Imageboxerbrown, Imageboxergold,
   Imagesetboxtwo, Imagesetboxthree
 };
 
