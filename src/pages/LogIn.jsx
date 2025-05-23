@@ -5,10 +5,12 @@ import { useNavigate } from 'react-router-dom';
 
 const LogIn = () => {
   const [showModal, setShowModal] = useState(false);
+  const [showForgotModal, setShowForgotModal] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [fullName, setFullName] = useState('');
   const [error, setError] = useState('');
+  const [forgotEmail, setForgotEmail] = useState('');
   const navigate = useNavigate();
 
   // Function to toggle modal visibility
@@ -94,6 +96,27 @@ const LogIn = () => {
     }
   };
 
+  // Handle forgot password form submission
+  const handleForgotPassword = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post('http://localhost:3000/api/password/forgot-password', { email: forgotEmail });
+      Swal.fire({
+        icon: 'success',
+        title: 'Email Sent',
+        text: 'If this email exists, a reset link has been sent.',
+      });
+      setShowForgotModal(false);
+      setForgotEmail('');
+    } catch (err) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: err.response?.data || 'Failed to send reset email.',
+      });
+    }
+  };
+
   // Handle logout
   const handleLogout = () => {
     localStorage.removeItem('token');
@@ -167,7 +190,13 @@ const LogIn = () => {
               <div className="form-check mb-4 mx-5 the-email-input">
                 <input type="checkbox" className="form-check-input" id="rememberMe" />
                 <label className="form-check-label ms-3" htmlFor="rememberMe">Remember me</label>
-                <a href="#" className="text-decoration-none text-dark ms-5 remember-me">Forgot your password?</a>
+                <a
+                  href="#"
+                  className="text-decoration-none text-dark ms-5 remember-me"
+                  onClick={e => { e.preventDefault(); setShowForgotModal(true); }}
+                >
+                  Forgot your password?
+                </a>
               </div>
               <div className="mx-5">
                 <button type="submit" className="btn btn-danger w-100 login-btn">LOGIN</button>
@@ -239,6 +268,36 @@ const LogIn = () => {
                 type="button"
                 className="btn btn-secondary mt-3 ms-2"
                 onClick={toggleModal}
+              >
+                Close
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* Forgot Password Modal */}
+      {showForgotModal && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <h3>Forgot Password</h3>
+            <form onSubmit={handleForgotPassword}>
+              <div className="form-group">
+                <label>Email</label>
+                <input
+                  type="email"
+                  className="form-control"
+                  placeholder="Enter your email"
+                  value={forgotEmail}
+                  onChange={e => setForgotEmail(e.target.value)}
+                  required
+                />
+              </div>
+              <button type="submit" className="btn btn-danger mt-3">Send Reset Link</button>
+              <button
+                type="button"
+                className="btn btn-secondary mt-3 ms-2"
+                onClick={() => setShowForgotModal(false)}
               >
                 Close
               </button>

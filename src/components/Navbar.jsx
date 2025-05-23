@@ -159,6 +159,9 @@ const Navbar = () => {
     whiteSpace: 'nowrap'
   };
 
+  // --- Mobile Shop Products Dropdown State ---
+  const [showMobileShopDropdown, setShowMobileShopDropdown] = useState(false);
+
   return (
     <>
       <nav
@@ -406,12 +409,42 @@ const Navbar = () => {
               </ul>
             </div>
 
+            {/* MOBILE MENU */}
             <div className="d-lg-none mt-3">
               <ul className="navbar-nav">
+                {/* Shop Products with categories and subcategories */}
                 <li>
-                  <Link className="nav-link" to="product">
-                    Shop
-                  </Link>
+                  <span
+                    className="nav-link fw-bold"
+                    style={{ cursor: 'pointer' }}
+                    onClick={() => setShowMobileShopDropdown(prev => !prev)}
+                  >
+                    Shop Products
+                    <i className={`ms-2 bi ${showMobileShopDropdown ? 'bi-chevron-up' : 'bi-chevron-down'}`}></i>
+                  </span>
+                  {showMobileShopDropdown && (
+                    <ul className="list-unstyled ms-3">
+                      <li>
+                        <Link className="nav-link fw-bold" to="Allproducts">
+                          ALL PRODUCTS
+                        </Link>
+                      </li>
+                      {filteredCategories.map(cat => (
+                        <li key={cat._id}>
+                          <span className="fw-bold">{cat.name.toUpperCase()}</span>
+                          <ul className="list-unstyled ms-3">
+                            {cat.subcategories && cat.subcategories.map(sub => (
+                              <li key={sub}>
+                                <Link to={`/products/${cat.name}/${sub}`} className="nav-link">
+                                  {sub}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </li>
                 <li>
                   <Link className="nav-link" to="blog">
