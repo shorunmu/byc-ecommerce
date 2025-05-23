@@ -31,22 +31,21 @@ import Groupeightfour from './Groupeightfour.png';
 import Menboxerimgone from './Menboxerimgone.png';
 import Trusted from './Trusted.png';
 import Boxercart from './Boxercart.png';
-import Frameboxersblack from './Frameboxersblack.png'
-import Frameboxerblue from './Frameboxerblue.png'
-import Imageboxerblueone from './Imageboxerblueone.png'
-import Imageboxerbrown from './Imageboxerbrown.png'
-import Imageboxergold from './Imageboxergold.png'
-import Imagesetbox from './Imagesetbox.png'
-import Imagesetboxone from './Imagesetboxone.png'
-import Imagesetboxtwo from './Imagesetboxtwo.png'
-import Imagesetboxthree from './Imagesetboxthree.png'
+import Frameboxersblack from './Frameboxersblack.png';
+import Frameboxerblue from './Frameboxerblue.png';
+import Imageboxerblueone from './Imageboxerblueone.png';
+import Imageboxerbrown from './Imageboxerbrown.png';
+import Imageboxergold from './Imageboxergold.png';
+import Imagesetboxone from './Imagesetboxone.png';
+import Imagesetboxtwo from './Imagesetboxtwo.png';
+import Imagesetboxthree from './Imagesetboxthree.png';
 
 export {
   Frameone, Frametwo, Framethree, Framefour, Framefive, Framesix, Byclogo, Frame166, Frame167, Frame168,
   Cardone, Cardtwo, Cardthree, Frameonsxni, Frameonsvni, Frameonegni, Frameonesvzr, Frameonesvzron, Frameonesvzrtw,
   Payments, Viewsandlove, Frameonesevenone, Frameoneseveght, Dashiconsawards, Rectangle, Framebycboxer,
   Frameonefivesix, Frameonefiveseven, Frameonefiveeight, Groupeightfour, Menboxerimgone, Trusted, Boxercart,
-  Frameboxersblack, Frameboxerblue, Imageboxerblueone, Imageboxerbrown, Imageboxergold, Imagesetbox, Imagesetboxone,
+  Frameboxersblack, Frameboxerblue, Imageboxerblueone, Imageboxerbrown, Imageboxergold, Imagesetboxone,
   Imagesetboxtwo, Imagesetboxthree
 };
 
