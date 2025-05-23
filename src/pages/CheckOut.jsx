@@ -75,7 +75,7 @@ const CheckOut = () => {
       }
       // 1. Create Order
       const orderRes = await axios.post(
-        'http://localhost:3000/api/orders',
+        `${import.meta.env.VITE_API_URL}/orders`,
         {
           items: orderItems,
           totalAmount: total + DELIVERY_FEE,
@@ -87,7 +87,7 @@ const CheckOut = () => {
       );
       // 2. Create Checkout
       await axios.post(
-        'http://localhost:3000/api/checkouts',
+        `${import.meta.env.VITE_API_URL}/checkouts`,
         {
           ...form,
           paymentMethod: 'Secured Online Payment',
@@ -101,7 +101,7 @@ const CheckOut = () => {
       );
       // 3. Clear backend cart
       try {
-        await axios.delete('http://localhost:3000/api/carts', {
+        await axios.delete(`${import.meta.env.VITE_API_URL}/carts`, {
           headers: { Authorization: `Bearer ${token}` },
         });
       } catch (err) {
@@ -181,7 +181,7 @@ const CheckOut = () => {
         try {
           // 1. Create Order
           const orderRes = await axios.post(
-            'http://localhost:3000/api/orders',
+            `${import.meta.env.VITE_API_URL}/orders`,
             {
               items: orderItems,
               totalAmount: total + DELIVERY_FEE,
@@ -193,7 +193,7 @@ const CheckOut = () => {
           );
           // 2. Create Checkout
           await axios.post(
-            'http://localhost:3000/api/checkouts',
+            `${import.meta.env.VITE_API_URL}/checkouts`,
             {
               ...form,
               paymentMethod: 'Direct Bank Transfer',
@@ -207,7 +207,7 @@ const CheckOut = () => {
           );
           // 3. Clear backend cart
           try {
-            await axios.delete('http://localhost:3000/api/carts', {
+            await axios.delete(`${import.meta.env.VITE_API_URL}/carts`, {
               headers: { Authorization: `Bearer ${token}` },
             });
           } catch (err) {

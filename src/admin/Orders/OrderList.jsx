@@ -10,8 +10,8 @@ const OrderList = () => {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    // IMPORTANT: For admin, fetch from /api/orders/all to get all orders with populated products
-    axios.get('http://localhost:3000/api/orders/all', {
+    // Use env variable for backend URL
+    axios.get(`${import.meta.env.VITE_API_URL}/orders/all`, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(res => setOrders(res.data))
@@ -29,7 +29,7 @@ const OrderList = () => {
     if (!newStatus) return;
     try {
       await axios.put(
-        `http://localhost:3000/api/orders/${orderId}`,
+        `${import.meta.env.VITE_API_URL}/orders/${orderId}`,
         { status: newStatus },
         { headers: { Authorization: `Bearer ${token}` } }
       );

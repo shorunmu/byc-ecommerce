@@ -6,12 +6,11 @@ const RecentlyViewed = () => {
   const [recentlyViewed, setRecentlyViewed] = useState([])
   const [showAll, setShowAll] = useState(false)
 
-  // Only show if user is logged in
   const user = localStorage.getItem('user')
   useEffect(() => {
     if (user) {
       const token = localStorage.getItem('token')
-      axios.get('http://localhost:3000/api/recentlyViews', {
+      axios.get(`${import.meta.env.VITE_API_URL}/recentlyViews`, {
         headers: { Authorization: `Bearer ${token}` }
       })
       .then(res => setRecentlyViewed(res.data))
@@ -19,7 +18,6 @@ const RecentlyViewed = () => {
     }
   }, [user])
 
-  // Only show if there are recently viewed products
   if (!user || !recentlyViewed.length) return null
 
   const visibleProducts = showAll ? recentlyViewed : recentlyViewed.slice(0, 5)

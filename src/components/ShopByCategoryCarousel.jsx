@@ -21,8 +21,8 @@ const ShopByCategoryCarousel = () => {
 
   useEffect(() => {
     Promise.all([
-      axios.get('http://localhost:3000/api/products'),
-      axios.get('http://localhost:3000/api/categories')
+      axios.get(`${import.meta.env.VITE_API_URL}/products`),
+      axios.get(`${import.meta.env.VITE_API_URL}/categories`)
     ]).then(([prodRes, catRes]) => {
       setProducts(prodRes.data || []);
       setCategoryList(catRes.data || []);

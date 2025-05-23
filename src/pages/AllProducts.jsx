@@ -8,16 +8,16 @@ import Pagination from '../components/Pagination';
 import ProductCard from '../components/Productcard';
 
 const AllProducts = () => {
-  const [products, setProducts] = useState([]); // State to hold products
-  const [loading, setLoading] = useState(true); // State to handle loading
-  const [error, setError] = useState(null); // State to handle errors
-  const navigate = useNavigate(); // React Router's navigate function
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/products'); // Fetch products from API
-        setProducts(response.data || []); // Set the response data
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/products`);
+        setProducts(response.data || []);
         setLoading(false);
       } catch (err) {
         console.error('Error fetching products:', err);
@@ -29,13 +29,12 @@ const AllProducts = () => {
     fetchProducts();
   }, []);
 
-  // Add to recently viewed on backend before navigating to AddToCart
   const handleBuyNow = async (product) => {
     const token = localStorage.getItem('token');
     if (token) {
       try {
         await axios.post(
-          'http://localhost:3000/api/recentlyViews',
+          `${import.meta.env.VITE_API_URL}/recentlyViews`,
           { productId: product._id || product.id },
           { headers: { Authorization: `Bearer ${token}` } }
         );
@@ -43,7 +42,7 @@ const AllProducts = () => {
         // Optionally handle error, but don't block navigation
       }
     }
-    navigate('/AddToCart', { state: { product } }); // Pass product data to AddToCart
+    navigate('/AddToCart', { state: { product } });
   };
 
   return (

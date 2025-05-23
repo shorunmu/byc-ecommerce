@@ -30,7 +30,7 @@ const Navbar = () => {
     if (!searchTerm.trim()) return;
     setSearching(true);
     try {
-      const res = await axios.get(`http://localhost:3000/api/products?search=${encodeURIComponent(searchTerm)}`);
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/products?search=${encodeURIComponent(searchTerm)}`);
       setSearchResults(res.data || []);
     } catch (err) {
       setSearchResults([]);
@@ -53,7 +53,7 @@ const Navbar = () => {
   // Fetch categories from backend
   const [categories, setCategories] = useState([]);
   useEffect(() => {
-    axios.get('http://localhost:3000/api/categories')
+    axios.get(`${import.meta.env.VITE_API_URL}/categories`)
       .then(res => setCategories(res.data))
       .catch(() => setCategories([]));
   }, []);

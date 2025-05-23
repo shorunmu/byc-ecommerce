@@ -21,7 +21,7 @@ const AddToCart = () => {
     const token = localStorage.getItem('token');
     if (!token) return;
     axios.post(
-      'http://localhost:3000/api/recentlyViews',
+      `${import.meta.env.VITE_API_URL}/recentlyViews`,
       { productId: product._id || product.id },
       { headers: { Authorization: `Bearer ${token}` } }
     ).catch(() => {});
@@ -59,7 +59,7 @@ const AddToCart = () => {
       let items = [];
       let totalAmount = 0;
       try {
-        const cartRes = await axios.get('http://localhost:3000/api/carts', {
+        const cartRes = await axios.get(`${import.meta.env.VITE_API_URL}/carts`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         items = cartRes.data.items || [];
@@ -107,7 +107,7 @@ const AddToCart = () => {
 
       // 4. POST updated cart
       await axios.post(
-        'http://localhost:3000/api/carts',
+        `${import.meta.env.VITE_API_URL}/carts`,
         {
           items: items
             .filter(i =>
@@ -174,7 +174,7 @@ const AddToCart = () => {
 
     try {
       await axios.post(
-        'http://localhost:3000/api/wishlist/add',
+        `${import.meta.env.VITE_API_URL}/wishlist/add`,
         { productId: product._id || product.id },
         { headers: { Authorization: `Bearer ${token}` } }
       );

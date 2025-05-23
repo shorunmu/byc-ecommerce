@@ -13,7 +13,7 @@ const MoreBlogNews = () => {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        const res = await axios.get(`http://localhost:3000/api/blogs/${id}`)
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/blogs/${id}`)
         setBlog(res.data)
         setLoading(false)
       } catch (err) {

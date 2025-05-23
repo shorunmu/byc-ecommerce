@@ -28,10 +28,13 @@ const LogIn = () => {
     setError('');
 
     try {
-      const response = await axios.post('http://localhost:3000/api/auth', {
-        email,
-        password,
-      });
+      const response = await axios.post(
+        `${import.meta.env.VITE_API_URL}/auth`,
+        {
+          email,
+          password,
+        }
+      );
 
       // Handle successful login
       const { token, user } = response.data;
@@ -66,11 +69,14 @@ const LogIn = () => {
     setError('');
 
     try {
-      const response = await axios.post('http://localhost:3000/api/users', {
-        name: fullName,
-        email,
-        password,
-      });
+      const response = await axios.post(
+        `${import.meta.env.VITE_API_URL}/users`,
+        {
+          name: fullName,
+          email,
+          password,
+        }
+      );
 
       // Handle successful account creation
       Swal.fire({
@@ -100,7 +106,10 @@ const LogIn = () => {
   const handleForgotPassword = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:3000/api/password/forgot-password', { email: forgotEmail });
+      await axios.post(
+        `${import.meta.env.VITE_API_URL}/password/forgot-password`,
+        { email: forgotEmail }
+      );
       Swal.fire({
         icon: 'success',
         title: 'Email Sent',

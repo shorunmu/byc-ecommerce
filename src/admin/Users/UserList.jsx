@@ -4,11 +4,10 @@ import axios from 'axios';
 const UserList = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
-  console.log(users)
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    axios.get('http://localhost:3000/api/users', {
+    axios.get(`${import.meta.env.VITE_API_URL}/users`, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(res => setUsers(res.data))

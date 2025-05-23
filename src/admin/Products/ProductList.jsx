@@ -26,7 +26,7 @@ const ProductList = () => {
   // Fetch products
   useEffect(() => {
     setLoading(true);
-    axios.get('http://localhost:3000/api/products')
+    axios.get(`${import.meta.env.VITE_API_URL}/products`)
       .then(res => setProducts(res.data))
       .catch(() => setProducts([]))
       .finally(() => setLoading(false));
@@ -34,7 +34,7 @@ const ProductList = () => {
 
   // Fetch categories
   useEffect(() => {
-    axios.get('http://localhost:3000/api/categories')
+    axios.get(`${import.meta.env.VITE_API_URL}/categories`)
       .then(res => setCategories(res.data))
       .catch(() => setCategories([]));
   }, []);
@@ -95,9 +95,9 @@ const ProductList = () => {
         subcategory: form.subcategory,
       };
       if (editingId) {
-        await axios.put(`http://localhost:3000/api/products/${editingId}`, payload);
+        await axios.put(`${import.meta.env.VITE_API_URL}/products/${editingId}`, payload);
       } else {
-        await axios.post('http://localhost:3000/api/products', payload);
+        await axios.post(`${import.meta.env.VITE_API_URL}/products`, payload);
       }
       setShowForm(false);
       setRefresh(r => !r);
@@ -110,7 +110,7 @@ const ProductList = () => {
   const handleDelete = async id => {
     if (!window.confirm('Delete this product?')) return;
     try {
-      await axios.delete(`http://localhost:3000/api/products/${id}`);
+      await axios.delete(`${import.meta.env.VITE_API_URL}/products/${id}`);
       setRefresh(r => !r);
     } catch (err) {
       alert('Delete failed');

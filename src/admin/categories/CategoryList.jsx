@@ -15,7 +15,7 @@ const CategoryList = () => {
 
   const fetchCategories = () => {
     const token = localStorage.getItem('token');
-    axios.get('http://localhost:3000/api/categories', {
+    axios.get(`${import.meta.env.VITE_API_URL}/categories`, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(res => setCategories(res.data))
@@ -28,7 +28,7 @@ const CategoryList = () => {
     if (!newCategory.name.trim()) return;
     const token = localStorage.getItem('token');
     try {
-      await axios.post('http://localhost:3000/api/categories', {
+      await axios.post(`${import.meta.env.VITE_API_URL}/categories`, {
         name: newCategory.name,
         subcategories: newCategory.subcategories
           ? newCategory.subcategories.split(',').map(s => s.trim()).filter(Boolean)
@@ -47,7 +47,7 @@ const CategoryList = () => {
     if (!editingData.name.trim()) return;
     const token = localStorage.getItem('token');
     try {
-      await axios.put(`http://localhost:3000/api/categories/${id}`, {
+      await axios.put(`${import.meta.env.VITE_API_URL}/categories/${id}`, {
         name: editingData.name,
         subcategories: editingData.subcategories
           ? editingData.subcategories.split(',').map(s => s.trim()).filter(Boolean)
@@ -67,7 +67,7 @@ const CategoryList = () => {
     if (!window.confirm('Are you sure you want to delete this category?')) return;
     const token = localStorage.getItem('token');
     try {
-      await axios.delete(`http://localhost:3000/api/categories/${id}`, {
+      await axios.delete(`${import.meta.env.VITE_API_URL}/categories/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       fetchCategories();

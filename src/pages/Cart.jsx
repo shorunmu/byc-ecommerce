@@ -25,7 +25,7 @@ const Cart = () => {
         return;
       }
 
-      const response = await axios.get('http://localhost:3000/api/carts', {
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/carts`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -41,8 +41,13 @@ const Cart = () => {
           text: 'Please log in again.',
         });
         navigate('/login');
+      } else if (error.response?.status === 404) {
+        // Cart not found (empty cart)
+        setCartItems([]);
+        setTotalAmount(0);
+        setError('Your cart is empty. Start shopping now!');
       } else {
-        setError(error.response?.data || error.message);
+        setError('Sorry, we could not load your cart. Please try again later.');
         Swal.fire({
           icon: 'error',
           title: 'Error fetching cart',
@@ -64,7 +69,7 @@ const Cart = () => {
         color: item.color
       }));
       const response = await axios.post(
-        'http://localhost:3000/api/carts',
+        `${import.meta.env.VITE_API_URL}/carts`,
         {
           items: itemsForBackend,
           totalAmount: calculateTotal(updatedItems),
@@ -163,7 +168,7 @@ const Cart = () => {
       if (result.isConfirmed) {
         try {
           const token = localStorage.getItem('token');
-          await axios.delete('http://localhost:3000/api/carts', {
+          await axios.delete(`${import.meta.env.VITE_API_URL}/carts`, {
             headers: { Authorization: `Bearer ${token}` },
           });
           setCartItems([]);
@@ -199,7 +204,7 @@ const Cart = () => {
     }
     try {
       await axios.post(
-        'http://localhost:3000/api/wishlist/add',
+        `${import.meta.env.VITE_API_URL}/wishlist/add`,
         { productId: item.product._id },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -240,7 +245,7 @@ const Cart = () => {
           </div>
         ) : error ? (
           <div className="text-center my-5">
-            <h5>Error: {error}</h5>
+            <h5>{error}</h5>
           </div>
         ) : cartItems.length === 0 ? (
           <div className="text-center my-5">

@@ -56,19 +56,7 @@ const Home = () => {
          <img src={Groupeightfour} alt="" className='w-100' />
         </div>
         </div>
-        {/* <div className="row justify-content-center ">
-          <div className="col-sm-12 col-md-12 col-lg-1"></div>
-          <div className="col-sm-12 col-md-12 col-lg-3 frametwo">
-            <img src={Frametwo} alt=""  className=" mt-5 mx-4"/>
-          </div>
-          <div className="col-sm-12 col-md-12 col-lg-3 framethree">
-            <img src={Framethree} alt="" className=" w-100 " />
-          </div>
-          <div className="col-sm-12 col-md-12 col-lg-3 frameone">
-            <img src={Frameone} alt="" className=" mt-5" />
-          </div>
-          <div className="col-sm-12 col-md-12 col-lg-1"></div>
-        </div> */}
+        
       </div>
       {/* second section of this homepage ends here  */}
 
@@ -147,62 +135,6 @@ const Home = () => {
         </div>
       </div>
 {/* fourth section of this homepage ends here  */}
-
- {/* fifth section of this homepage start here  */}
-      {/* <div className="container">
-        <div className="row">
-          <div className="col-sm-12 col-md-12 col-lg-12 mb-3 text-center">
-            <h4 className='fw-bold'>Shop By Category</h4>
-          </div>
-          <div className="col-sm-12 col-md-12 col-lg-12  d-flex gap-4 justify-content-center p-rows ">
-            <p >For Women</p>
-            <p className='secoond-p'> For Men <hr className="border border-danger border-1 opacity-50"></hr></p>
-            <p>For Kids</p>
-          </div>
-
-          <div className="col-sm-12 col-md-12 col-lg-12 d-flex gap-1 justify-content-center style-btn mb-5 ">
-            <button className="btn btn-primary btn-text" type="submit">T-Shirt</button>
-            <button className="btn btn-primary btn-text" type="submit">Singlet</button>
-            <button className="btn btn-primary btn-text pant-text" type="submit">Pants</button>
-            <button className="btn btn-primary btn-text" type="submit">Boxers</button>
-          </div>
-        </div>
-
-        <div className="row d-flex justify-content-center g-0 this-row-images-three">
-          <div className="col-sm-12 col-md-12 col-lg-3">
-            <img src={Cardone} alt="" className='w-100'/>
-            <div className="mt-3 px-3">
-              <p className='fw-bold d-inline women-pants-text'>WOWEN PANTS </p>
-              <p className='d-inline m-1 byc-fivezero-text'>BYC-501LMS</p>
-              <p className='amount-naira'>₦2,800.00</p>
-            </div>
-          </div>
-
-          <div className="col-sm-12 col-md-12 col-lg-3 ">
-            <img src={Cardthree} alt="" className='w-100'/>
-            <div className="mt-3 px-3">
-              <p className='fw-bold d-inline women-pants-text'>WOWEN PANTS </p>
-              <p className='d-inline ms-1 byc-fivezero-text'>BYC-501LMS</p>
-              <p className='amount-naira'>₦2,800.00</p>
-            </div>
-          </div>
-          <div className="col-sm-12 col-md-12 col-lg-3 ">
-            <img src={Cardtwo} alt="" className='w-100' />
-            <div className="mt-3 px-3">
-              <p className='fw-bold d-inline women-pants-text'>WOWEN PANTS </p>
-              <p className='d-inline m-1 byc-fivezero-text'>BYC-501LMS</p>
-              <p className='amount-naira'>₦2,800.00</p>
-            </div>
-          </div>
-
-
-          <div className="view-btn text-center my-5">
-            <button type="button" className="btn btn-secondary btn-lg  ">View All</button>
-          </div>
-        </div>
-
-        </div> */}
-
 
         <ShopByCategoryCarousel/>
 {/* fifth section of this homepage ends here  */}

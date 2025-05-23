@@ -19,8 +19,8 @@ const CategoryProducts = () => {
     const fetchAll = async () => {
       try {
         const [prodRes, catRes] = await Promise.all([
-          axios.get('http://localhost:3000/api/products'),
-          axios.get('http://localhost:3000/api/categories'),
+          axios.get(`${import.meta.env.VITE_API_URL}/products`),
+          axios.get(`${import.meta.env.VITE_API_URL}/categories`),
         ]);
         setProducts(prodRes.data || []);
         setCategories(catRes.data || []);
@@ -33,12 +33,10 @@ const CategoryProducts = () => {
     fetchAll();
   }, []);
 
-  // Find the category object by name (case-insensitive)
   const categoryObj = categories.find(
     c => c.name.toLowerCase() === category.toLowerCase()
   );
 
-  // Robust filter for both string and object id
   const filtered = categoryObj
     ? products.filter(p => {
         const prodCat =

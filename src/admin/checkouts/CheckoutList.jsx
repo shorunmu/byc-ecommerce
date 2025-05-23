@@ -7,7 +7,7 @@ const CheckoutList = () => {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    axios.get('http://localhost:3000/api/checkouts', {
+    axios.get(`${import.meta.env.VITE_API_URL}/checkouts`, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(res => setCheckouts(res.data))

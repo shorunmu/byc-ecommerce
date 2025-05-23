@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const ProductCard = ({ product }) => {
   const navigate = useNavigate();
@@ -37,23 +38,18 @@ const ProductCard = ({ product }) => {
       return;
     }
     try {
-      const res = await fetch('http://localhost:3000/api/wishlist/add', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ productId: product._id || product.id }),
-      });
-      if (res.ok) {
-        alert('Product added to wishlist!');
-      } else if (res.status === 400) {
+      await axios.post(
+        `${import.meta.env.VITE_API_URL}/wishlist/add`,
+        { productId: product._id || product.id },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      alert('Product added to wishlist!');
+    } catch (error) {
+      if (error.response && error.response.status === 400) {
         alert('This item is already in your wishlist.');
       } else {
         alert('Failed to add product to wishlist.');
       }
-    } catch (error) {
-      alert('Failed to add product to wishlist.');
     }
   };
 

@@ -22,7 +22,7 @@ const BlogList = () => {
 
   const fetchBlogs = () => {
     const token = localStorage.getItem('token');
-    axios.get('http://localhost:3000/api/blogs', {
+    axios.get(`${import.meta.env.VITE_API_URL}/blogs`, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(res => setBlogs(res.data))
@@ -34,7 +34,7 @@ const BlogList = () => {
     e.preventDefault();
     const token = localStorage.getItem('token');
     try {
-      await axios.post('http://localhost:3000/api/blogs', newBlog, {
+      await axios.post(`${import.meta.env.VITE_API_URL}/blogs`, newBlog, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setNewBlog({
@@ -77,7 +77,7 @@ const BlogList = () => {
       views
     };
     try {
-      await axios.put(`http://localhost:3000/api/blogs/${id}`, updateData, {
+      await axios.put(`${import.meta.env.VITE_API_URL}/blogs/${id}`, updateData, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setEditingId(null);
@@ -92,7 +92,7 @@ const BlogList = () => {
     if (!window.confirm('Are you sure you want to delete this blog?')) return;
     const token = localStorage.getItem('token');
     try {
-      await axios.delete(`http://localhost:3000/api/blogs/${id}`, {
+      await axios.delete(`${import.meta.env.VITE_API_URL}/blogs/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       fetchBlogs();

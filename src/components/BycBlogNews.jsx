@@ -8,7 +8,7 @@ const BycBlogNews = () => {
   const [showAll, setShowAll] = useState(false)
 
   useEffect(() => {
-    axios.get('http://localhost:3000/api/blogs')
+    axios.get(`${import.meta.env.VITE_API_URL}/blogs`)
       .then(res => setBlogs(res.data))
       .catch(err => console.error(err))
   }, [])

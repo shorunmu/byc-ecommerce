@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
-const API_URL = 'http://localhost:3000/api/wishlist'; // Change to your backend URL
+const API_URL = `${import.meta.env.VITE_API_URL}/wishlist`;
 
 const Wishlist = () => {
   const [wishlistItems, setWishlistItems] = useState([]);
@@ -21,11 +22,10 @@ const Wishlist = () => {
     }
     const fetchWishlist = async () => {
       try {
-        const res = await fetch(API_URL, {
+        const res = await axios.get(API_URL, {
           headers: { Authorization: `Bearer ${token}` },
         });
-        if (!res.ok) throw new Error('Failed to fetch wishlist');
-        const data = await res.json();
+        const data = res.data;
         setWishlistItems(
           (data || []).map((product) => ({
             id: product._id,
@@ -52,16 +52,12 @@ const Wishlist = () => {
   const handleRemoveFromWishlist = async (id) => {
     try {
       const token = localStorage.getItem('token');
-      const res = await fetch(`${API_URL}/remove`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ productId: id }),
-      });
-      if (!res.ok) throw new Error('Failed to remove item');
-      const data = await res.json();
+      const res = await axios.post(
+        `${API_URL}/remove`,
+        { productId: id },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      const data = res.data;
       setWishlistItems(
         (data || []).map((product) => ({
           id: product._id,
@@ -94,13 +90,11 @@ const Wishlist = () => {
       let items = [];
       let totalAmount = 0;
       try {
-        const cartRes = await fetch('http://localhost:3000/api/carts', {
+        const cartRes = await axios.get(`${import.meta.env.VITE_API_URL}/carts`, {
           headers: { Authorization: `Bearer ${token}` },
         });
-        if (cartRes.ok) {
-          const cartData = await cartRes.json();
-          items = cartData.items || [];
-        }
+        const cartData = cartRes.data;
+        items = cartData.items || [];
       } catch (err) {
         // If cart not found, start with empty cart
       }
@@ -134,13 +128,9 @@ const Wishlist = () => {
       );
 
       // 4. POST updated cart
-      await fetch('http://localhost:3000/api/carts', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
+      await axios.post(
+        `${import.meta.env.VITE_API_URL}/carts`,
+        {
           items: items.map((i) => ({
             product: typeof i.product === 'string' ? i.product : i.product._id || i.product,
             quantity: i.quantity,
@@ -148,8 +138,9 @@ const Wishlist = () => {
             color: i.color,
           })),
           totalAmount,
-        }),
-      });
+        },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
 
       alert('Item added to cart!');
     } catch (error) {
