@@ -1,9 +1,11 @@
 import React, {useState, useEffect} from 'react'
+import { useNavigate } from 'react-router-dom'; // Add this import
 import { Cardone, Cardthree, Cardtwo, Frame166, Frame167, Frame168, Framefive, Framefour, Frameone, Frameonegni, Frameonsvni, Frameonsxni, Framesix, Framethree, Frametwo, Groupeightfour } from '../assets'
 import BycBlogNews from '../components/BycBlogNews'
 import ShopByCategoryCarousel from '../components/ShopByCategoryCarousel';
 
 const Home = () => {
+  const navigate = useNavigate(); // Add this line
   const words = ["yourself", "women", "kids"];
   const [currentWord, setCurrentWord] = useState(words[0]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -39,8 +41,20 @@ const Home = () => {
 
         <div className="col-sm-12 col-md-12 col-lg-1"></div>
           <div className="col-sm-12 col-md-12 col-lg-10 text-center justify-content-center d-flex gap-4 white-and-black-btn my-3 ">
-            <button type="button" className="btn btn-primary btn-lg first-btn">Shop Now</button>
-            <button type="button" className="btn btn-secondary btn-lg sec-btn">Learn more</button>
+            <button
+              type="button"
+              className="btn btn-primary btn-lg first-btn"
+              onClick={() => navigate('/Allproducts')}
+            >
+              Shop Now
+            </button>
+            <button
+              type="button"
+              className="btn btn-secondary btn-lg sec-btn"
+              onClick={() => navigate('/About')}
+            >
+              Learn more
+            </button>
           </div>
         <div className="col-sm-12 col-md-12 col-lg-1"></div>
         </div>
