@@ -126,46 +126,7 @@ export const allProducts = [
     productPrice: "₦1,900.00",
     ratings: "4.05"
   },
-  {
-    image: Imagesetbox,
-    productName: "BOXER",
-    productCode: "BYC 1161",
-    productDescription: "Fashionable Men's Underwear Boxer Cotton Underwear 3 In 1",
-    productPrice: "₦1,800.00",
-    ratings: "4.05"
-  },
-  {
-    image: Imagesetboxthree,
-    productName: "BOXER",
-    productCode: "BYC 1201",
-    productDescription: "Fashionable Men's Underwear Boxer Cotton Underwear 3 In 1",
-    productPrice: "₦1,800.00",
-    ratings: "4.05"
-  },
-  {
-    image: Imagesetboxtwo,
-    productName: "BOXER",
-    productCode: "KBY-3204",
-    productDescription: "Fashionable Men's Underwear Boxer Cotton Underwear 3 In 1",
-    productPrice: "₦10,000.00",
-    ratings: "4.05"
-  },
-  {
-    image: Imagesetboxone,
-    productName: "BOXER",
-    productCode: "BYL-6709",
-    productDescription: "Fashionable Men's Underwear Boxer Cotton Underwear 3 In 1",
-    productPrice: "₦12,000.00",
-    ratings: "4.05"
-  },
-  {
-    image: Imagesetboxtwo,
-    productName: "BOXER",
-    productCode: "KBY-3204",
-    productDescription: "Fashionable Men's Underwear Boxer Cotton Underwear 3 In 1",
-    productPrice: "₦10,000.00",
-    ratings: "4.05"
-  },
+
 ];
 
 export const recentlyViewedProducts = [
