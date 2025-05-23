@@ -36,7 +36,6 @@ import Frameboxerblue from './Frameboxerblue.png';
 import Imageboxerblueone from './Imageboxerblueone.png';
 import Imageboxerbrown from './Imageboxerbrown.png';
 import Imageboxergold from './Imageboxergold.png';
-import Imagesetboxthree from './Imagesetboxthree.png';
 
 export {
   Frameone, Frametwo, Framethree, Framefour, Framefive, Framesix, Byclogo, Frame166, Frame167, Frame168,
@@ -44,7 +43,6 @@ export {
   Payments, Viewsandlove, Frameonesevenone, Frameoneseveght, Dashiconsawards, Rectangle, Framebycboxer,
   Frameonefivesix, Frameonefiveseven, Frameonefiveeight, Groupeightfour, Menboxerimgone, Trusted, Boxercart,
   Frameboxersblack, Frameboxerblue, Imageboxerblueone, Imageboxerbrown, Imageboxergold,
-  Imagesetboxthree
 };
 
 export const allProducts = [
