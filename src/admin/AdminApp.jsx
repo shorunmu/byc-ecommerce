@@ -2,7 +2,7 @@ import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import AdminSidebar from './components/AdminSidebar';
 import DashboardHome from './DashboardHome';
-import ProductList from './Products/ProductList';
+import ProductList from './products/ProductList';
 import OrderList from './Orders/OrderList';
 import UserList from './Users/UserList';
 import CheckoutList from './checkouts/CheckoutList';
