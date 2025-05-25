@@ -30,7 +30,7 @@ const RecentlyViewedCard = ({ product }) => {
 
   return (
     <div className="col">
-      <div className="card h-100 border-0">
+      <div className="card h-100 border-0 equal-height-card">
         <img
           src={
             product.productImage && product.productImage.length > 0
@@ -40,12 +40,12 @@ const RecentlyViewedCard = ({ product }) => {
           className="card-img-top"
           alt={product.productName || 'Product'}
         />
-        <div className="card-body framebyc-boxer-card">
+        <div className="card-body framebyc-boxer-card d-flex flex-column">
           <h6 className="card-title fw-bold">{product.productName}</h6>
           <p className="card-text framebyc-boxer-card-paragraph">{product.productNumber}</p>
           <p className="framebyc-boxer-card-small lh-small">{product.productDescription}</p>
-          <p className="fw-bold framebyc-boxer-card-small-p">{product.productPrice}</p>
-          <div className="d-flex mb-2 fs-10">
+          <p className="fw-bold framebyc-boxer-card-small-p">₦{product.productPrice}</p>
+          <div className="d-flex mb-2 fs-10 mt-auto">
             <span className="text-warning custom-fonts-ss">
               {renderStars(rating)}
             </span>
