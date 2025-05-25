@@ -1,10 +1,13 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { Boxercart } from '../assets'; // Use your fallback image
+import { Boxercart } from '../assets';
 
 const ProductCard = ({ product }) => {
   const navigate = useNavigate();
+
+  // Guard against null/undefined product
+  if (!product) return null;
 
   // Function to render stars based on the product rating
   const renderStars = (rating) => {
