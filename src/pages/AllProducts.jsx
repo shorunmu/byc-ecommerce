@@ -20,28 +20,14 @@ const AllProducts = () => {
         setProducts(response.data || []);
         setLoading(false);
       } catch (err) {
-        console.error('Error fetching products:', err);
         setError('Failed to fetch products');
         setLoading(false);
       }
     };
-
     fetchProducts();
   }, []);
 
-  const handleBuyNow = async (product) => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      try {
-        await axios.post(
-          `${import.meta.env.VITE_API_URL}/recentlyViews`,
-          { productId: product._id || product.id },
-          { headers: { Authorization: `Bearer ${token}` } }
-        );
-      } catch (err) {
-        // Optionally handle error, but don't block navigation
-      }
-    }
+  const handleBuyNow = (product) => {
     navigate('/AddToCart', { state: { product } });
   };
 
@@ -54,14 +40,12 @@ const AllProducts = () => {
             <SortByDrop />
           </div>
         </div>
-
         <div className="d-flex justify-content-between align-items-center border-bottom pb-2">
           <h6 className="mb-0 fw-bold ms-2"> {} </h6>
           <div>
             <ToggleButton />
           </div>
         </div>
-
         {loading ? (
           <p>Loading products...</p>
         ) : error ? (
@@ -76,18 +60,14 @@ const AllProducts = () => {
                 <ProductCard
                   key={product._id || product.id || index}
                   product={product}
-                  navigate={navigate}
-                  handleBuyNow={handleBuyNow}
                 />
               ))}
           </div>
         )}
-
         <div className="allproduct-pagination">
           <Pagination />
         </div>
       </div>
-
       <RecentlyViewed />
     </div>
   );

@@ -177,6 +177,9 @@ const Wishlist = () => {
     );
   }
 
+  // Filter out null/undefined items for safety
+  const filteredWishlist = wishlistItems.filter(Boolean);
+
   return (
     <>
       <div className="container my-5">
@@ -190,62 +193,69 @@ const Wishlist = () => {
               <div className="text-center my-5">
                 <h5>Loading...</h5>
               </div>
-            ) : wishlistItems.length > 0 ? (
-              wishlistItems.map((item, index) => (
-                <div className="col" key={item.id || index}>
-                  <div className="card h-100 border-0 camisole-borders">
-                    <img
-                      src={item.image}
-                      className="card-img-top"
-                      alt={item.name}
-                    />
-                    <div className="card-body framebyc-camisole-card">
-                      <h6 className="card-title fw-bold">{item.name}</h6>
-                      <p className="card-text framebyc-camisole-card-paragraph">
-                        <strong>{item.number || 'BYC 1166'}</strong>
-                      </p>
-                      <p className="framebyc-camisole-card-small lh-small">
-                        {item.description || 'No description available.'}
-                      </p>
-                      <p className="fw-bold framebyc-camisole-card-small-p">
-                        ₦{item.price ? item.price.toLocaleString() : '0.00'}
-                      </p>
-                      <div className="d-flex mb-2 fs-10">
-                        <span className="text-warning custom-fonts-ss">
-                          {renderStars(item.rating?.average || 0)}
-                        </span>
-                        <span className="fs-7 ms-2 custom-fonts-ss">
-                          {item.rating?.average || 0}
-                        </span>
-                      </div>
-
-                      <div className="d-flex gap-2 mb-2 card-buttons">
-                        {/* Remove Button */}
-                        <button
-                          className="btn btn-white white-danger-btn btn-sm"
-                          onClick={() => handleRemoveFromWishlist(item.id)}
-                        >
-                          <span className="heartandbuy text-danger">
-                            <i className="bi bi-x"></i>
-                            <span className="ms-2">Remove</span>
+            ) : filteredWishlist.length > 0 ? (
+              filteredWishlist.map((item, index) => {
+                // SAFER fallback for rating (handles null rating object)
+                const rating =
+                  item && item.rating && typeof item.rating.average === 'number'
+                    ? item.rating.average
+                    : 0;
+                return (
+                  <div className="col" key={item.id || index}>
+                    <div className="card h-100 border-0 camisole-borders">
+                      <img
+                        src={item.image}
+                        className="card-img-top"
+                        alt={item.name}
+                      />
+                      <div className="card-body framebyc-camisole-card">
+                        <h6 className="card-title fw-bold">{item.name}</h6>
+                        <p className="card-text framebyc-camisole-card-paragraph">
+                          <strong>{item.number || 'BYC 1166'}</strong>
+                        </p>
+                        <p className="framebyc-camisole-card-small lh-small">
+                          {item.description || 'No description available.'}
+                        </p>
+                        <p className="fw-bold framebyc-camisole-card-small-p">
+                          ₦{item.price ? item.price.toLocaleString() : '0.00'}
+                        </p>
+                        <div className="d-flex mb-2 fs-10">
+                          <span className="text-warning custom-fonts-ss">
+                            {renderStars(rating)}
                           </span>
-                        </button>
-
-                        {/* Buy Now Button */}
-                        <button
-                          className="btn btn-danger btn-sm"
-                          onClick={() => handleAddToCart(item)}
-                        >
-                          <span className="heartandbuy">
-                            <i className="bi bi-cart3"></i>
-                            <span className="ms-2">Buy Now</span>
+                          <span className="fs-7 ms-2 custom-fonts-ss">
+                            {rating}
                           </span>
-                        </button>
+                        </div>
+
+                        <div className="d-flex gap-2 mb-2 card-buttons">
+                          {/* Remove Button */}
+                          <button
+                            className="btn btn-white white-danger-btn btn-sm"
+                            onClick={() => handleRemoveFromWishlist(item.id)}
+                          >
+                            <span className="heartandbuy text-danger">
+                              <i className="bi bi-x"></i>
+                              <span className="ms-2">Remove</span>
+                            </span>
+                          </button>
+
+                          {/* Buy Now Button */}
+                          <button
+                            className="btn btn-danger btn-sm"
+                            onClick={() => handleAddToCart(item)}
+                          >
+                            <span className="heartandbuy">
+                              <i className="bi bi-cart3"></i>
+                              <span className="ms-2">Buy Now</span>
+                            </span>
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              ))
+                );
+              })
             ) : (
               <div className="text-center my-5">
                 <h5>Your wishlist is empty.</h5>

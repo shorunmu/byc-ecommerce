@@ -20,13 +20,15 @@ const RecentlyViewed = () => {
 
   if (!user || !recentlyViewed.length) return null
 
-  const visibleProducts = showAll ? recentlyViewed : recentlyViewed.slice(0, 5)
+  // Filter out null/undefined products
+  const filteredRecentlyViewed = recentlyViewed.filter(Boolean)
+  const visibleProducts = showAll ? filteredRecentlyViewed : filteredRecentlyViewed.slice(0, 5)
 
   return (
     <div className="container mt-5 border-rounded p-3 recently-viewed">
       <div className="d-flex justify-content-between align-items-center border-bottom pb-2">
         <h6 className="mb-0 fw-bold ms-3">Recently Viewed</h6>
-        {recentlyViewed.length > 5 && (
+        {filteredRecentlyViewed.length > 5 && (
           <button
             className="btn btn-link fw-bold text-danger text-see-all-icon text-decoration-none"
             style={{ boxShadow: 'none' }}
