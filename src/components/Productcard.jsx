@@ -66,8 +66,15 @@ const ProductCard = ({ product }) => {
     typeof product.productPrice === 'number'
       ? product.productPrice.toLocaleString()
       : '0.00';
-  const rating = product?.rating?.average || 0;
-  const numberOfRatings = product?.rating?.numberOfRatings || 0;
+  // SAFER fallback for rating (handles null rating object)
+  const rating =
+    product && product.rating && typeof product.rating.average === 'number'
+      ? product.rating.average
+      : 0;
+  const numberOfRatings =
+    product && product.rating && typeof product.rating.numberOfRatings === 'number'
+      ? product.rating.numberOfRatings
+      : 0;
 
   return (
     <div className="col my-3">
