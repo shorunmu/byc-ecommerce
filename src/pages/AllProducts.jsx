@@ -66,18 +66,20 @@ const AllProducts = () => {
           <p>Loading products...</p>
         ) : error ? (
           <p>{error}</p>
-        ) : products.length === 0 ? (
+        ) : products.filter(Boolean).length === 0 ? (
           <p>No products available.</p>
         ) : (
           <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
-            {products.map((product, index) => (
-              <ProductCard
-                key={index}
-                product={product}
-                navigate={navigate}
-                handleBuyNow={handleBuyNow}
-              />
-            ))}
+            {products
+              .filter(Boolean)
+              .map((product, index) => (
+                <ProductCard
+                  key={product._id || product.id || index}
+                  product={product}
+                  navigate={navigate}
+                  handleBuyNow={handleBuyNow}
+                />
+              ))}
           </div>
         )}
 
