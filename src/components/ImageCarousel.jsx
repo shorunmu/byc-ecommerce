@@ -16,9 +16,9 @@ const ImageCarousel = ({ images = [] }) => {
   };
 
   return (
-    <div className="carousel " style={{ display: 'block', width: '100%' }}>
+    <div className="carousel" style={{ display: 'block', width: '100%' }}>
       {/* Main Image */}
-      <div className='' style={{ textAlign: 'center', marginBottom: 12 }}>
+      <div style={{ textAlign: 'center', marginBottom: 12 }}>
         <img
           src={images[activeIndex]}
           alt={`Product ${activeIndex}`}
@@ -32,10 +32,12 @@ const ImageCarousel = ({ images = [] }) => {
         />
       </div>
       {/* Thumbnails and Arrows */}
-      <div  className='mt-5' style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <button onClick={handlePrevious} className='nav-button'>
-          <i className="bi bi-chevron-left"></i>
-        </button>
+      <div className='mt-5' style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        {images.length > 1 && (
+          <button onClick={handlePrevious} className='nav-button'>
+            <i className="bi bi-chevron-left"></i>
+          </button>
+        )}
         <div className="thumbnail-container" style={{ display: 'flex', gap: 8 }}>
           {images.map((img, index) => (
             <img
@@ -55,9 +57,11 @@ const ImageCarousel = ({ images = [] }) => {
             />
           ))}
         </div>
-        <button onClick={handleNext} className='nav-button'>
-          <i className="bi bi-chevron-right"></i>
-        </button>
+        {images.length > 1 && (
+          <button onClick={handleNext} className='nav-button'>
+            <i className="bi bi-chevron-right"></i>
+          </button>
+        )}
       </div>
     </div>
   );

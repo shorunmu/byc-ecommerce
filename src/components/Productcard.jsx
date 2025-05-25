@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { Boxercart } from '../assets'; // Use your fallback image
 
 const ProductCard = ({ product }) => {
   const navigate = useNavigate();
@@ -53,12 +54,24 @@ const ProductCard = ({ product }) => {
     }
   };
 
+  // Safe fallbacks
+  const imageSrc =
+    product.productImage && product.productImage.length > 0
+      ? product.productImage[0]
+      : Boxercart;
+  const price =
+    typeof product.productPrice === 'number'
+      ? product.productPrice.toLocaleString()
+      : '0.00';
+  const rating = product?.rating?.average || 0;
+  const numberOfRatings = product?.rating?.numberOfRatings || 0;
+
   return (
     <div className="col my-3">
       <div className="card h-100 border-0 position-relative camisole-border">
         {/* Product Image */}
         <img
-          src={product.productImage[0]}
+          src={imageSrc}
           className="card-img-top"
           alt={product.productName || 'Product'}
         />
@@ -71,17 +84,17 @@ const ProductCard = ({ product }) => {
           </p>
           <p className="framebyc-camisole-card-small lh-small">{product.productDescription}</p>
           <p className="fw-bold framebyc-camisole-card-small-p">
-            ₦{product.productPrice.toLocaleString()}
+            ₦{price}
           </p>
 
           {/* Product Rating */}
           <div className="d-flex mb-2 fs-10">
             <span className="text-warning custom-fonts-ss">
-              {renderStars(product.rating?.average || 0)}
+              {renderStars(rating)}
             </span>
-            {product.rating?.numberOfRatings > 0 && (
+            {numberOfRatings > 0 && (
               <span className="fs-7 ms-2 custom-fonts-ss">
-                ({product.rating.numberOfRatings})
+                ({numberOfRatings})
               </span>
             )}
           </div>
