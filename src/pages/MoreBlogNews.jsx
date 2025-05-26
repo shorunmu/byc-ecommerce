@@ -4,6 +4,19 @@ import axios from 'axios'
 import BycBlogNews from '../components/BycBlogNews'
 import Pagination from '../components/Pagination'
 
+// Utility to split by visual lines (approximate)
+function splitByVisualLines(text, lines = 5, charsPerLine = 80) {
+  if (!text) return { first: '', rest: '' };
+  const approx = lines * charsPerLine;
+  if (text.length <= approx) return { first: text, rest: '' };
+  let cutoff = text.lastIndexOf(' ', approx);
+  if (cutoff === -1) cutoff = approx;
+  return {
+    first: text.slice(0, cutoff),
+    rest: text.slice(cutoff)
+  };
+}
+
 const MoreBlogNews = () => {
   const { id } = useParams()
   const [blog, setBlog] = useState(null)
@@ -24,13 +37,12 @@ const MoreBlogNews = () => {
     fetchBlog()
   }, [id])
 
-  // Split description into lines (by line break)
   let firstFive = ''
   let rest = ''
   if (blog && blog.blogDescription) {
-    const descLines = blog.blogDescription.split(/\r?\n/).filter(line => line.trim() !== '')
-    firstFive = descLines.slice(0, 5).join('\n')
-    rest = descLines.slice(5).join('\n')
+    const split = splitByVisualLines(blog.blogDescription, 5, 80)
+    firstFive = split.first
+    rest = split.rest
   }
 
   return (
@@ -49,10 +61,10 @@ const MoreBlogNews = () => {
             <div className="col-12 text-center mt-5">
               <h3 className="fw-bold">{blog.title}</h3>
             </div>
-            {/* First five lines of description */}
+            {/* First 5 visual lines (approximate) */}
             {firstFive && (
               <div className="col-12 my-4">
-                <p className="justify-text amet-minim-moll" style={{ whiteSpace: 'pre-line' }}>
+                <p className="justify-text amet-minim-moll blog-visual-clamp-5">
                   {firstFive}
                 </p>
               </div>
@@ -66,7 +78,7 @@ const MoreBlogNews = () => {
             {/* Rest of the description */}
             {rest && (
               <div className="col-12 my-4">
-                <p className="justify-text amet-minim-moll" style={{ whiteSpace: 'pre-line' }}>
+                <p className="justify-text amet-minim-moll">
                   {rest}
                 </p>
               </div>
@@ -85,6 +97,19 @@ const MoreBlogNews = () => {
       <div className="row text-center">
         <Pagination />
       </div>
+      {/* Clamp CSS for first 5 lines */}
+      <style>
+        {`
+        .blog-visual-clamp-5 {
+          display: -webkit-box;
+          -webkit-line-clamp: 5;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: normal;
+        }
+        `}
+      </style>
     </div>
   )
 }
