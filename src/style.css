@@ -267,6 +267,19 @@ html, body {
     background: #fff !important;
     border: 0px solid #000 !important;
 }
+.blog-preview-clamp {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  line-clamp: 5; /* Optional, future-facing */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  line-height: 1.5em;
+  max-height: 7.5em;
+}
+
+
 
 /* blog page styling ends here  */
 

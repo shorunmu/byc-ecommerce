@@ -154,20 +154,7 @@ const Blog = () => {
         />
       </div>
 
-      <style>
-        {`
-          .blog-preview-clamp {
-            display: -webkit-box;
-            -webkit-line-clamp: 5;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: normal;
-            line-height: 1.5em;
-            max-height: 7.5em; /* 5 lines x 1.5em */
-          }
-        `}
-      </style>
+
     </div>
   );
 };
