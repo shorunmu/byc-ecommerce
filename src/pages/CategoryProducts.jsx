@@ -7,12 +7,15 @@ import ToggleButton from '../components/ToggleButton';
 import Pagination from '../components/Pagination';
 import RecentlyViewed from '../components/RecentlyViewed';
 
+const PRODUCTS_PER_PAGE = 15;
+
 const CategoryProducts = () => {
   const { category, subcategory } = useParams();
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -51,6 +54,13 @@ const CategoryProducts = () => {
       })
     : [];
 
+  // Pagination logic
+  const filteredProducts = filtered.filter(Boolean);
+  const totalPages = Math.ceil(filteredProducts.length / PRODUCTS_PER_PAGE);
+  const startIdx = (currentPage - 1) * PRODUCTS_PER_PAGE;
+  const endIdx = startIdx + PRODUCTS_PER_PAGE;
+  const paginatedProducts = filteredProducts.slice(startIdx, endIdx);
+
   const handleBuyNow = product => {
     navigate('/AddToCart', { state: { product } });
   };
@@ -78,25 +88,29 @@ const CategoryProducts = () => {
           <p>Loading products...</p>
         ) : error ? (
           <p>{error}</p>
-        ) : filtered.filter(Boolean).length === 0 ? (
+        ) : filteredProducts.length === 0 ? (
           <p>No products found.</p>
         ) : (
           <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
-            {filtered
-              .filter(Boolean)
-              .map((product, index) => (
-                <ProductCard
-                  key={product._id || product.id || index}
-                  product={product}
-                  navigate={navigate}
-                  handleBuyNow={handleBuyNow}
-                />
-              ))}
+            {paginatedProducts.map((product, index) => (
+              <ProductCard
+                key={product._id || product.id || index}
+                product={product}
+                navigate={navigate}
+                handleBuyNow={handleBuyNow}
+              />
+            ))}
           </div>
         )}
 
         <div className="allproduct-pagination">
-          <Pagination />
+          {totalPages > 1 && (
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={setCurrentPage}
+            />
+          )}
         </div>
       </div>
 

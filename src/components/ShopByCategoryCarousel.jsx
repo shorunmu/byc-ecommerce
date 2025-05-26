@@ -9,7 +9,8 @@ const categories = [
   { label: 'For Kids', value: 'children' }
 ];
 
-const subcategories = ['T-Shirt', 'Singlet', 'Pants', 'Boxers'];
+// Make sure these match your product data exactly (e.g. 'T-shirts' if that's what your data uses)
+const subcategories = ['T-shirts', 'Singlet', 'Pants', 'Boxers'];
 
 const ShopByCategoryCarousel = () => {
   const [products, setProducts] = useState([]);
@@ -39,11 +40,13 @@ const ShopByCategoryCarousel = () => {
     return found ? found.name.toLowerCase() : '';
   };
 
-  // Filter products by selected category and subcategory
+  // Robust filter for subcategory (ignores case and dashes/spaces)
+  const normalize = str => (str || '').replace(/[-\s]/g, '').toLowerCase();
+
   const filtered = products.filter(
     p =>
       getCategoryName(p.category) === selectedCategory.toLowerCase() &&
-      p.subcategory?.toLowerCase() === selectedSubcategory.toLowerCase()
+      normalize(p.subcategory) === normalize(selectedSubcategory)
   );
 
   const responsive = {
