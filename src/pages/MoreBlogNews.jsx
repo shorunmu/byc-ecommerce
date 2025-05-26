@@ -24,6 +24,15 @@ const MoreBlogNews = () => {
     fetchBlog()
   }, [id])
 
+  // Split description into lines (by line break)
+  let firstFive = ''
+  let rest = ''
+  if (blog && blog.blogDescription) {
+    const descLines = blog.blogDescription.split(/\r?\n/).filter(line => line.trim() !== '')
+    firstFive = descLines.slice(0, 5).join('\n')
+    rest = descLines.slice(5).join('\n')
+  }
+
   return (
     <div className="container">
       <div className="row">
@@ -40,11 +49,11 @@ const MoreBlogNews = () => {
             <div className="col-12 text-center mt-5">
               <h3 className="fw-bold">{blog.title}</h3>
             </div>
-            {/* First 5 visual lines of description */}
-            {blog.blogDescription && (
+            {/* First five lines of description */}
+            {firstFive && (
               <div className="col-12 my-4">
-                <p className="justify-text amet-minim-moll blog-visual-clamp-5">
-                  {blog.blogDescription}
+                <p className="justify-text amet-minim-moll" style={{ whiteSpace: 'pre-line' }}>
+                  {firstFive}
                 </p>
               </div>
             )}
@@ -55,7 +64,13 @@ const MoreBlogNews = () => {
               </div>
             )}
             {/* Rest of the description */}
-            {/* If you want to show the rest after clicking "Read more", you can implement that logic here */}
+            {rest && (
+              <div className="col-12 my-4">
+                <p className="justify-text amet-minim-moll" style={{ whiteSpace: 'pre-line' }}>
+                  {rest}
+                </p>
+              </div>
+            )}
           </>
         )}
       </div>
@@ -70,19 +85,6 @@ const MoreBlogNews = () => {
       <div className="row text-center">
         <Pagination />
       </div>
-      {/* CSS for 5-line clamp */}
-      <style>
-        {`
-        .blog-visual-clamp-5 {
-          display: -webkit-box;
-          -webkit-line-clamp: 5;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: normal;
-        }
-        `}
-      </style>
     </div>
   )
 }
