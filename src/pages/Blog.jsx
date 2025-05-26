@@ -34,14 +34,6 @@ const Blog = () => {
     setCurrentPage(pageNumber);
   };
 
-  // Show only the first 5 lines, add ... if more
-  const getPreview = (desc) => {
-    if (!desc) return '';
-    const lines = desc.split(/\r?\n/).filter(line => line.trim() !== '');
-    if (lines.length <= 5) return lines.join('\n');
-    return lines.slice(0, 5).join('\n') + '...';
-  };
-
   return (
     <div className="container my-5">
       <div className="row">
@@ -77,15 +69,8 @@ const Blog = () => {
                         <div className="col-md-7">
                           <div className="card-body">
                             <h6 className="card-title fw-bold">{blog.title}</h6>
-                            <small className="card-text d-block">
-                              {getPreview(blog.blogDescription)
-                                .split('\n')
-                                .map((line, i) => (
-                                  <span key={i}>
-                                    {line}
-                                    <br />
-                                  </span>
-                                ))}
+                            <small className="card-text d-block blog-preview-clamp">
+                              {blog.blogDescription}
                             </small>
                             <Link
                               to={`/blog/${blog._id}`}
@@ -117,15 +102,8 @@ const Blog = () => {
                         <div className="col-md-7">
                           <div className="card-body">
                             <h6 className="card-title fw-bold">{blog.title}</h6>
-                            <small className="card-text d-block">
-                              {getPreview(blog.blogDescription)
-                                .split('\n')
-                                .map((line, i) => (
-                                  <span key={i}>
-                                    {line}
-                                    <br />
-                                  </span>
-                                ))}
+                            <small className="card-text d-block blog-preview-clamp">
+                              {blog.blogDescription}
                             </small>
                             <Link
                               to={`/blog/${blog._id}`}
@@ -175,6 +153,19 @@ const Blog = () => {
           onPageChange={handlePageChange}
         />
       </div>
+      {/* CSS for line clamp */}
+      <style>
+        {`
+        .blog-preview-clamp {
+          display: -webkit-box;
+          -webkit-line-clamp: 5;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: normal;
+        }
+        `}
+      </style>
     </div>
   );
 };

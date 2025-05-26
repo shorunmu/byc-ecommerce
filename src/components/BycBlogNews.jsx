@@ -15,22 +15,6 @@ const BycBlogNews = () => {
 
   const visibleBlogs = showAll ? blogs : blogs.slice(0, 3)
 
-  // Helper to get first 3.5 lines (show 3 full lines and half of the 4th, then ...)
-  const getPreview = (desc) => {
-    if (!desc) return ''
-    const lines = desc.split(/\r?\n/).filter(line => line.trim() !== '')
-    if (lines.length === 0) return ''
-    if (lines.length <= 3) return lines.join('\n')
-    if (lines.length === 4) {
-      // Show 3 full lines and half of the 4th
-      const halfLine = lines[3].split(' ').slice(0, Math.ceil(lines[3].split(' ').length / 2)).join(' ')
-      return lines.slice(0, 3).join('\n') + '\n' + halfLine + '...'
-    }
-    // More than 4 lines: show 3 full lines and half of the 4th
-    const halfLine = lines[3].split(' ').slice(0, Math.ceil(lines[3].split(' ').length / 2)).join(' ')
-    return lines.slice(0, 3).join('\n') + '\n' + halfLine + '...'
-  }
-
   return (
     <div className="container my-5 byc-blog-news">
       <div className="row g-3 ">
@@ -63,15 +47,8 @@ const BycBlogNews = () => {
                   </p>
                 </div>
                 <h5 className="card-title fw-bold mb-4">{blog.title}</h5>
-                <p className="card-text justify-text blognewsframes-p">
-                  {getPreview(blog.blogDescription)
-                    .split('\n')
-                    .map((line, i) => (
-                      <span key={i}>
-                        {line}
-                        <br />
-                      </span>
-                    ))}
+                <p className="card-text justify-text blognewsframes-p blog-preview-clamp-3">
+                  {blog.blogDescription}
                 </p>
                 <Link
                   to={`/blog/${blog._id}`}
@@ -95,6 +72,19 @@ const BycBlogNews = () => {
           </button>
         </div>
       )}
+      {/* CSS for 3-line clamp */}
+      <style>
+        {`
+        .blog-preview-clamp-3 {
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: normal;
+        }
+        `}
+      </style>
     </div>
   )
 }
