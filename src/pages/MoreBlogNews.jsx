@@ -59,11 +59,11 @@ const MoreBlogNews = () => {
           <>
             {/* Blog Title */}
             <div className="col-12 text-center mt-5">
-              <h3 className="fw-bold">{blog.title}</h3>
+              <h3 className="fw-bold" style={{fontSize: "25px"}}>{blog.title}</h3>
             </div>
             {/* First 5 visual lines (approximate) */}
             {firstFive && (
-              <div className="col-12 my-4">
+              <div className="col-12 my-4" style={{fontSize: "25px"}}>
                 <p className="justify-text amet-minim-moll blog-visual-clamp-5">
                   {firstFive}
                 </p>
@@ -77,7 +77,7 @@ const MoreBlogNews = () => {
             )}
             {/* Rest of the description */}
             {rest && (
-              <div className="col-12 my-4">
+              <div className="col-12 my-4" style={{fontSize: "25px"}}>
                 <p className="justify-text amet-minim-moll">
                   {rest}
                 </p>

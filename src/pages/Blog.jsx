@@ -69,7 +69,7 @@ const Blog = () => {
                         <div className="col-md-7">
                           <div className="card-body">
                             <h6 className="card-title fw-bold">{blog.title}</h6>
-                            <p className="card-text blog-preview-clamp my-3 " style={{fontSize: "12px"}}>
+                            <p className="card-text blog-preview-clamp mb-3 mt-4 " style={{fontSize: "14px"}}>
                               {blog.blogDescription}
                             </p>
                             <Link
@@ -102,7 +102,7 @@ const Blog = () => {
                         <div className="col-md-7">
                           <div className="card-body">
                             <h6 className="card-title fw-bold">{blog.title}</h6>
-                            <p className="card-text blog-preview-clamp">
+                            <p className="card-text blog-preview-clamp mb-3 mt-4" style={{fontSize: "14px"}}>
                               {blog.blogDescription}
                             </p>
                             <Link
