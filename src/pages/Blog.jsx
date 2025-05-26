@@ -69,7 +69,7 @@ const Blog = () => {
                         <div className="col-md-7">
                           <div className="card-body">
                             <h6 className="card-title fw-bold">{blog.title}</h6>
-                            <p className="card-text blog-preview-clamp">
+                            <p className="card-text blog-preview-clamp my-3 " style={{fontSize: "12px"}}>
                               {blog.blogDescription}
                             </p>
                             <Link
