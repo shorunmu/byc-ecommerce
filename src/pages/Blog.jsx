@@ -154,7 +154,6 @@ const Blog = () => {
         />
       </div>
 
-      {/* Clamp CSS */}
       <style>
         {`
           .blog-preview-clamp {
@@ -164,6 +163,8 @@ const Blog = () => {
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: normal;
+            line-height: 1.5em;
+            max-height: 7.5em; /* 5 lines x 1.5em */
           }
         `}
       </style>
