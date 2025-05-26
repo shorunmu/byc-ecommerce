@@ -196,17 +196,24 @@ const LogIn = () => {
                   autoComplete="new-password"
                 />
               </div>
-              <div className="form-check mb-4 mx-5 the-email-input">
+              <div className="d-flex flex-column flex-sm-row justify-content-between align-items-start mb-4 mx-3">
+              <div className="form-check">
                 <input type="checkbox" className="form-check-input" id="rememberMe" />
-                <label className="form-check-label ms-3" htmlFor="rememberMe">Remember me</label>
-                <a
-                  href="#"
-                  className="text-decoration-none text-dark ms-5 remember-me"
-                  onClick={e => { e.preventDefault(); setShowForgotModal(true); }}
-                >
-                  Forgot your password?
-                </a>
+                <label className="form-check-label ms-2" htmlFor="rememberMe">Remember me</label>
               </div>
+
+              <a
+                href="#"
+                className="text-decoration-none text-dark mt-2 mt-sm-0"
+                onClick={e => {
+                  e.preventDefault();
+                  setShowForgotModal(true);
+                }}
+              >
+                Forgot your password?
+              </a>
+            </div>
+
               <div className="mx-5">
                 <button type="submit" className="btn btn-danger w-100 login-btn">LOGIN</button>
               </div>
