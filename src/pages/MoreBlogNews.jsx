@@ -24,13 +24,13 @@ const MoreBlogNews = () => {
     fetchBlog()
   }, [id])
 
-  // Split description into lines (by period or line break)
+  // Split description into lines (by line break)
   let firstFive = ''
   let rest = ''
   if (blog && blog.blogDescription) {
-    const descLines = blog.blogDescription.split(/\r?\n|(?<=\.) /)
-    firstFive = descLines.slice(0, 5).join(' ')
-    rest = descLines.slice(5).join(' ')
+    const descLines = blog.blogDescription.split(/\r?\n/).filter(line => line.trim() !== '')
+    firstFive = descLines.slice(0, 5).join('\n')
+    rest = descLines.slice(5).join('\n')
   }
 
   return (
@@ -51,18 +51,22 @@ const MoreBlogNews = () => {
             </div>
             {/* First five lines of description */}
             <div className="col-12 my-4">
-              <p className="justify-text amet-minim-moll">{firstFive}</p>
+              <p className="justify-text amet-minim-moll" style={{ whiteSpace: 'pre-line' }}>
+                {firstFive}
+              </p>
             </div>
             {/* Blog Image */}
             {blog.blogImage && blog.blogImage[0] && (
               <div className="col-12 mb-4">
-                <img src={blog.blogImage[0]} alt="" className="w-100" />
+                <img src={blog.blogImage[0]} alt="" className="w-100 img-fluid" />
               </div>
             )}
             {/* Rest of the description */}
             {rest && (
               <div className="col-12 my-4">
-                <p className="justify-text amet-minim-moll">{rest}</p>
+                <p className="justify-text amet-minim-moll" style={{ whiteSpace: 'pre-line' }}>
+                  {rest}
+                </p>
               </div>
             )}
           </>

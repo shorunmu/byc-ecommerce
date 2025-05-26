@@ -15,20 +15,20 @@ const BycBlogNews = () => {
 
   const visibleBlogs = showAll ? blogs : blogs.slice(0, 3)
 
-  // Helper to get first 4 lines or fallback to 40 words
+  // Helper to get first 3.5 lines (show 3 full lines and half of the 4th, then ...)
   const getPreview = (desc) => {
     if (!desc) return ''
     const lines = desc.split(/\r?\n/).filter(line => line.trim() !== '')
-    if (lines.length > 1) {
-      if (lines.length <= 4) return lines.join('\n')
-      return lines.slice(0, 4).join('\n') + '...'
+    if (lines.length === 0) return ''
+    if (lines.length <= 3) return lines.join('\n')
+    if (lines.length === 4) {
+      // Show 3 full lines and half of the 4th
+      const halfLine = lines[3].split(' ').slice(0, Math.ceil(lines[3].split(' ').length / 2)).join(' ')
+      return lines.slice(0, 3).join('\n') + '\n' + halfLine + '...'
     }
-    // Fallback: limit to 40 words if not enough lines
-    const words = desc.split(/\s+/)
-    if (words.length > 40) {
-      return words.slice(0, 40).join(' ') + '...'
-    }
-    return desc
+    // More than 4 lines: show 3 full lines and half of the 4th
+    const halfLine = lines[3].split(' ').slice(0, Math.ceil(lines[3].split(' ').length / 2)).join(' ')
+    return lines.slice(0, 3).join('\n') + '\n' + halfLine + '...'
   }
 
   return (

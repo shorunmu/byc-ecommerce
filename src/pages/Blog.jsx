@@ -34,20 +34,12 @@ const Blog = () => {
     setCurrentPage(pageNumber);
   };
 
-  // Helper to get first 4 lines or fallback to 40 words
+  // Show only the first 5 lines, add ... if more
   const getPreview = (desc) => {
     if (!desc) return '';
     const lines = desc.split(/\r?\n/).filter(line => line.trim() !== '');
-    if (lines.length > 1) {
-      if (lines.length <= 4) return lines.join('\n');
-      return lines.slice(0, 4).join('\n') + '...';
-    }
-    // Fallback: limit to 40 words if not enough lines
-    const words = desc.split(/\s+/);
-    if (words.length > 40) {
-      return words.slice(0, 40).join(' ') + '...';
-    }
-    return desc;
+    if (lines.length <= 5) return lines.join('\n');
+    return lines.slice(0, 5).join('\n') + '...';
   };
 
   return (
